@@ -1,0 +1,29 @@
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# Visual Studio / IDE
+.idea/
+
+# Node.js / React
+node_modules/
+dist/
+coverage/
+
+# Testing
+TestResults/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
