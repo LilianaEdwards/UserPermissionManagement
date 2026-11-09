@@ -27,7 +27,7 @@ jobs:
         run: echo "GitHub Actions workflow executed successfully!"
 
   backend-build:
-    name: Build ASP.NET Core Backend
+    name: Build and Test ASP.NET Core Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -40,9 +40,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore NuGet dependencies
-        working-directory: backend/UserPermissionManagement.Api
-        run: dotnet restore UserPermissionManagement.Api.csproj
+        run: dotnet restore UserPermissionManagement.slnx
 
-      - name: Build ASP.NET Core project
-        working-directory: backend/UserPermissionManagement.Api
-        run: dotnet build UserPermissionManagement.Api.csproj --configuration Release --no-restore
+      - name: Build solution
+        run: dotnet build UserPermissionManagement.slnx --configuration Release --no-restore
+
+      - name: Run unit tests
+        run: dotnet test UserPermissionManagement.slnx --configuration Release --no-build --no-restore

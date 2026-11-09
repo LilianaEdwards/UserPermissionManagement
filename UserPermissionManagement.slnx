@@ -2,4 +2,7 @@
   <Folder Name="/backend/">
     <Project Path="backend/UserPermissionManagement.Api/UserPermissionManagement.Api.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/UserPermissionManagement.Tests/UserPermissionManagement.Tests.csproj" />
+  </Folder>
 </Solution>
