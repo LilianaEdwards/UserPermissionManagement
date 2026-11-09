@@ -11,8 +11,12 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Repository Check
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +25,24 @@ jobs:
 
       - name: Print success message
         run: echo "GitHub Actions workflow executed successfully!"
+
+  backend-build:
+    name: Build ASP.NET Core Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore NuGet dependencies
+        working-directory: backend/UserPermissionManagement.Api
+        run: dotnet restore UserPermissionManagement.Api.csproj
+
+      - name: Build ASP.NET Core project
+        working-directory: backend/UserPermissionManagement.Api
+        run: dotnet build UserPermissionManagement.Api.csproj --configuration Release --no-restore
