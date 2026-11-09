@@ -1,0 +1,23 @@
+
+name: CI - Build and Test
+
+on:
+  push:
+    branches:
+      - master
+      - 'feature/**'
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Print success message
+        run: echo "GitHub Actions workflow executed successfully!"
